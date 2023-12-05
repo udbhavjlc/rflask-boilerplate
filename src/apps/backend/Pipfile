@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pydantic = "==2.4"
+bcrypt = "==4.0.1"
+pyyaml = "==6.0.1"
+types-pyyaml = "==6.0.12.12"
+requests = "==2.31.0"
+pytest = "==7.4.3"
+waitress = "==2.1.2"
+certifi = "==2023.11.17"
+
+[dev-packages]
+flask = "==3.0.0"
+flask-cors = "==4.0.0"
+gunicorn = "==21.2.0"
+mypy = "==1.6.1"
+pymongo = {extras = ["srv"], version = "3.12"}
+types-flask-cors = "==4.0.0.1"
+vulture = "==2.10"
+types-requests = "==2.31.0.10"
+
+[requires]
+python_version = "3.12"

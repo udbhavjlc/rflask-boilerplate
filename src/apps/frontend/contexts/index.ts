@@ -1,6 +1,4 @@
 import { AccountProvider, useAccountContext } from './account.provider';
-import { useAuthContext } from './auth.provider';
+import { AuthProvider, useAuthContext } from './auth.provider';
 
-export {
-  AccountProvider, useAccountContext, useAuthContext
-};
+export { AccountProvider, useAccountContext, AuthProvider, useAuthContext };

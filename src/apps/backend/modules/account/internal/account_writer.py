@@ -1,5 +1,9 @@
+from pymongo import ReturnDocument
+from bson.objectid import ObjectId
+
 from dataclasses import asdict
 
+from modules.account.errors import AccountNotFoundError
 from modules.account.internal.store.account_model import AccountModel
 from modules.account.internal.store.account_repository import AccountRepository
 from modules.account.internal.account_reader import AccountReader
@@ -22,4 +26,21 @@ class AccountWriter:
       "_id": query.inserted_id
     })
 
-    return AccountModel(**account)
+    return AccountUtil.convert_account_model_to_account(AccountModel(**account))
+  
+  @staticmethod
+  def update_password_by_account_id(account_id: str, password: str) -> AccountModel:
+    hashed_password = AccountUtil.hash_password(
+      password=password
+    )
+    updated_account = AccountRepository.account_db.find_one_and_update(
+      {"_id": ObjectId(account_id)},
+      {"$set": {"hashed_password": hashed_password}},
+      return_document=ReturnDocument.AFTER
+    )
+    if updated_account is None:
+      raise AccountNotFoundError(f"Account not found: {account_id}")
+
+    return AccountUtil.convert_account_model_to_account(
+      AccountModel(**updated_account)
+      )

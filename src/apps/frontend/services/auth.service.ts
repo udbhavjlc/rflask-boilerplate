@@ -7,12 +7,14 @@ export default class AuthService extends APIService {
     firstName: string,
     lastName: string,
     username: string,
+    customer_type: string,
     password: string,
   ): Promise<ApiResponse<void>> =>
     this.apiClient.post('/accounts', {
       first_name: firstName,
       last_name: lastName,
       username: username,
+      customer_type: customer_type,
       password: password,
     });
 

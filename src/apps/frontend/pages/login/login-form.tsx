@@ -85,8 +85,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ onError, onSuccess }) => {
         </Button>
         <p className="self-center font-medium">
           Don’t have any account?{' '}
-          <Link to={routes.SIGNUP} className="text-primary">
-            Sign Up
+          <Link to={'/care-givers/signup'} className="text-primary">
+            Sign Up Care Giver
+          </Link>
+          <Link to={'/families/signup'} className="text-primary">
+            Sign Up Family
           </Link>
         </p>
       </VerticalStackLayout>

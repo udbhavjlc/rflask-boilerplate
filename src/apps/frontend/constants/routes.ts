@@ -4,7 +4,7 @@ const routes = {
   FORGOT_PASSWORD: '/forgot-password',
   LOGIN: '/login',
   RESET_PASSWORD: '/accounts/:accountId/reset_password',
-  SIGNUP: '/signup',
+  SIGNUP: '/:customer_type/signup',
   TASKS: '/tasks',
 };
 

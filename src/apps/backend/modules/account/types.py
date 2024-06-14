@@ -16,6 +16,7 @@ class CreateAccountParams:
   last_name: str
   password: str
   username: str
+  customer_type: str
 
 
 @dataclass(frozen=True)

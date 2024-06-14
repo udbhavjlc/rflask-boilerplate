@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useParams } from 'react-router-dom';
 
 import constant from '../../../constants';
 import { useAuthContext } from '../../../contexts';
@@ -11,12 +12,14 @@ interface SignupFormProps {
 }
 const useSignupForm = ({ onError, onSuccess }: SignupFormProps) => {
   const { isSignupLoading, signupError, signup } = useAuthContext();
+  const { customer_type } = useParams();
 
   const formik = useFormik({
     initialValues: {
       firstName: '',
       lastName: '',
       username: '',
+      customer_type: customer_type,
       password: '',
       retypePassword: '',
     },
@@ -45,6 +48,7 @@ const useSignupForm = ({ onError, onSuccess }: SignupFormProps) => {
         values.firstName,
         values.lastName,
         values.username,
+        values.customer_type,
         values.password,
       )
         .then(() => {

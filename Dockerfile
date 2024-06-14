@@ -26,13 +26,13 @@ RUN node --version && npm --version
 COPY package.json /.project/package.json
 COPY package-lock.json /.project/package-lock.json
 RUN cd /.project && npm ci
-RUN mkdir -p /opt/app && cp -a /.project/. /opt/app/
+RUN mkdir -p /root/app && cp -a /.project/. /root/app/
 
-WORKDIR /opt/app
+WORKDIR /root/app
 
 RUN npm ci
 
-COPY . /opt/app
+COPY . /root/app
 
 # build arguments
 ARG APP_ENV

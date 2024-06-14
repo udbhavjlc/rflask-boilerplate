@@ -17,6 +17,7 @@ type AuthContextType = {
     firstName: string,
     lastName: string,
     username: string,
+    customer_type: string,
     password: string,
   ) => Promise<void>;
   signupError: AsyncError;
@@ -32,9 +33,10 @@ const signupFn = async (
   firstName: string,
   lastName: string,
   username: string,
+  customer_type: string,
   password: string,
 ): Promise<ApiResponse<void>> =>
-  authService.signup(firstName, lastName, username, password);
+  authService.signup(firstName, lastName, username, customer_type, password);
 
 const loginFn = async (
   username: string,
